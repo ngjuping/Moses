@@ -1,0 +1,6 @@
+cache/
+__pycache__/
+*.pyc
+smoke_summary.json
+SMOKE_REPORT.md
+charts/smoke/
