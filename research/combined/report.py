@@ -25,7 +25,7 @@ VARIANTS = [
     ("moses_mwu_k1", "(b) Moses experts → MWU → ST k=1"),
     ("st20_k1", "(c) SuperTrader 20-bar k=1"),
     ("st5h_k1", "SuperTrader 5h lookback k=1"),
-    ("buyhold", "equal-weight long-only"),
+    ("buyhold", "buy-and-hold of the 8 coins"),
 ]
 COLORS = {
     "am_mwu_k1": "#1f4e79",
@@ -340,7 +340,7 @@ def _markdown(results, wall_s, jobs, smoke, summary) -> list[str]:
         "",
         "The eight coins are the current Moses list. Coins that died before the sample are absent. That is survivorship in the universe, not in the month-by-month membership (membership is fixed).",
         "Equity and MDD are cumulative sums of simple returns, matching the Moses walk-forward report, not a compounded net-asset-value path.",
-        "Gross exposure of the long/short books is 1. The long-only reference is also gross 1, but it is not dollar-neutral, so its Sharpe is not a like-for-like residual.",
+        "Gross exposure of the long/short books is 1. Buy-and-hold of the 8 coins is also gross 1, but it is long-only, so its Sharpe is not a dollar-neutral residual. That line was previously titled equal-weight long-only.",
         "48 formulas is a seeded sample from the published grammar, not an exhaustive search of that grammar.",
         "MWU state is re-initialized at the start of each 180-day window, which is how the Moses monthly replay treats a new factor set.",
         "No exchange fee schedule other than the flat 0 and 5bp turnover charges was applied. Funding is included on top.",
@@ -368,7 +368,8 @@ def _verdict_paragraph(results: list[dict]) -> str:
         f"Before costs, equal-weighting the same AlphaMaster factors has a Sharpe at least as high as MWU on {ew_beats} of {len(results)} timeframes, "
         "so the combiner is not the source of the zero-fee result. "
         "The zero-fee edge, where it exists, is a high-turnover rank signal. It is visible in the top panel of each equity chart and gone in the bottom panel. "
-        "The equal-weight long-only reference is the only book with a positive Sharpe once 5bp and funding are both charged."
+        "Buy-and-hold of the 8 coins is the only book with a positive Sharpe once 5bp and funding are both charged. "
+        "That book is an equal-weight long-only hold, with no rebalancing after the open, so its turnover is zero."
     )
 
 

@@ -14,7 +14,7 @@ A position is fixed at the bar close and earns the next bar's simple close-to-cl
 - **30m**. 0 fee: staged k=1 Sharpe 0.26, total +29.2%, MDD -53.1%, Sharpe/|MDD%| 0.00. Equal-weight factors Sharpe 0.80, Moses experts 1.25, 20-bar momentum 0.02. 5bp: staged k=1 Sharpe -20.66, total -2374.6%, turnover 40.23/day.
 - **1h**. 0 fee: staged k=1 Sharpe 0.11, total +12.6%, MDD -80.8%, Sharpe/|MDD%| 0.00. Equal-weight factors Sharpe 0.14, Moses experts -0.02, 20-bar momentum 1.23. 5bp: staged k=1 Sharpe -10.47, total -1172.5%, turnover 19.84/day.
 
-The staged book does not survive the 5bp cost the study asked for. Every long/short variant has a negative 5bp Sharpe on every timeframe, and Sharpe/|MDD%| collapses to about zero because the equity path is a long drawdown: |MDD| is essentially the whole loss, so the ratio stops separating the books. What does separate them is turnover. The k=1 cross-sectional book reranks every bar. At 15m that is on the order of 75 units of notional a day, about 3.8% of gross per day at 5bp, and that book has no positive month. Widening to k=3 cuts turnover and still loses money at 5bp. Before costs, equal-weighting the same AlphaMaster factors has a Sharpe at least as high as MWU on 3 of 3 timeframes, so the combiner is not the source of the zero-fee result. The zero-fee edge, where it exists, is a high-turnover rank signal. It is visible in the top panel of each equity chart and gone in the bottom panel. The equal-weight long-only reference is the only book with a positive Sharpe once 5bp and funding are both charged.
+The staged book does not survive the 5bp cost the study asked for. Every long/short variant has a negative 5bp Sharpe on every timeframe, and Sharpe/|MDD%| collapses to about zero because the equity path is a long drawdown: |MDD| is essentially the whole loss, so the ratio stops separating the books. What does separate them is turnover. The k=1 cross-sectional book reranks every bar. At 15m that is on the order of 75 units of notional a day, about 3.8% of gross per day at 5bp, and that book has no positive month. Widening to k=3 cuts turnover and still loses money at 5bp. Before costs, equal-weighting the same AlphaMaster factors has a Sharpe at least as high as MWU on 3 of 3 timeframes, so the combiner is not the source of the zero-fee result. The zero-fee edge, where it exists, is a high-turnover rank signal. It is visible in the top panel of each equity chart and gone in the bottom panel. Buy-and-hold of the 8 coins is the only book with a positive Sharpe once 5bp and funding are both charged. It is an equal-weight long-only hold of those coins, with no rebalancing after the open, so its turnover is zero.
 
 ## Summary
 
@@ -40,7 +40,7 @@ Factor screen: correlation cap 0.60, selected count mean 7.45 (min 3, max 8) ove
 | (b) Moses experts → MWU → ST k=1 | +187.5% | 1.56 | -62.1% | 0.03 | -7252.1% | -59.24 | -7252.1% | -0.01 | 124.52 | +0.5% |
 | (c) SuperTrader 20-bar k=1 | -107.1% | -0.76 | -134.0% | -0.01 | -2902.3% | -20.47 | -2904.0% | -0.01 | 46.78 | +0.2% |
 | SuperTrader 5h lookback k=1 | -107.1% | -0.76 | -134.0% | -0.01 | -2902.3% | -20.47 | -2904.0% | -0.01 | 46.78 | +0.2% |
-| equal-weight long-only | +106.8% | 0.51 | -98.7% | 0.01 | +106.8% | 0.51 | -98.7% | 0.01 | 0.00 | +19.8% |
+| buy-and-hold of the 8 coins | +106.8% | 0.51 | -98.7% | 0.01 | +106.8% | 0.51 | -98.7% | 0.01 | 0.00 | +19.8% |
 
 Per year, 5bp plus funding. Each cell is total simple return and Sharpe.
 
@@ -92,7 +92,7 @@ Factor screen: correlation cap 0.60, selected count mean 7.20 (min 3, max 8) ove
 | (b) Moses experts → MWU → ST k=1 | +148.5% | 1.25 | -38.2% | 0.03 | -4110.2% | -34.45 | -4110.1% | -0.01 | 71.28 | -0.5% |
 | (c) SuperTrader 20-bar k=1 | +2.1% | 0.02 | -104.7% | 0.00 | -1389.9% | -10.20 | -1390.7% | -0.01 | 23.30 | +3.3% |
 | SuperTrader 5h lookback k=1 | -28.3% | -0.21 | -86.2% | -0.00 | -1924.7% | -13.99 | -1926.7% | -0.01 | 31.74 | +0.4% |
-| equal-weight long-only | +105.2% | 0.51 | -97.9% | 0.01 | +105.1% | 0.51 | -97.9% | 0.01 | 0.00 | +19.8% |
+| buy-and-hold of the 8 coins | +105.2% | 0.51 | -97.9% | 0.01 | +105.1% | 0.51 | -97.9% | 0.01 | 0.00 | +19.8% |
 
 Per year, 5bp plus funding. Each cell is total simple return and Sharpe.
 
@@ -145,7 +145,7 @@ Factor screen: correlation cap 0.60, selected count mean 7.83 (min 5, max 8) ove
 | (b) Moses experts → MWU → ST k=1 | -2.5% | -0.02 | -50.0% | -0.00 | -1928.3% | -16.79 | -1929.1% | -0.01 | 32.23 | -0.5% |
 | (c) SuperTrader 20-bar k=1 | +160.0% | 1.23 | -60.3% | 0.02 | -516.9% | -3.97 | -521.6% | -0.01 | 11.33 | +4.5% |
 | SuperTrader 5h lookback k=1 | -19.1% | -0.15 | -81.2% | -0.00 | -1297.3% | -10.05 | -1299.2% | -0.01 | 21.39 | +0.7% |
-| equal-weight long-only | +100.6% | 0.50 | -102.0% | 0.00 | +100.6% | 0.50 | -102.0% | 0.00 | 0.00 | +19.8% |
+| buy-and-hold of the 8 coins | +100.6% | 0.50 | -102.0% | 0.00 | +100.6% | 0.50 | -102.0% | 0.00 | 0.00 | +19.8% |
 
 Per year, 5bp plus funding. Each cell is total simple return and Sharpe.
 
@@ -182,6 +182,261 @@ Charts: `charts/equity_1h.png`, `charts/drawdown_1h.png`, `charts/weights_1h.png
 Monthly selected count and top formula (by |rank IC|):
 
 2023-08:8:sample_26, 2023-09:8:sample_16, 2023-10:8:sample_16, 2023-11:8:sample_26, 2023-12:8:sample_26, 2024-01:8:sample_26, 2024-02:8:sample_27, 2024-03:8:sample_26, 2024-04:8:sample_26, 2024-05:8:sample_26, 2024-06:8:sample_26, 2024-07:8:sample_26, 2024-08:8:sample_26, 2024-09:8:sample_26, 2024-10:7:sample_26, 2024-11:8:sample_26, 2024-12:8:sample_26, 2025-01:8:sample_26, 2025-02:8:sample_26, 2025-03:8:sample_26, 2025-04:5:sample_26, 2025-05:5:sample_31, 2025-06:8:sample_38, 2025-07:8:sample_38, 2025-08:8:sample_38, 2025-09:8:sample_12, 2025-10:8:sample_12, 2025-11:8:sample_12, 2025-12:8:sample_25, 2026-01:8:sample_26, 2026-02:8:sample_26, 2026-03:8:sample_25, 2026-04:8:sample_25, 2026-05:8:sample_26, 2026-06:8:sample_26, 2026-07:8:sample_26, 2026-08:8:sample_26, 2026-09:8:sample_26, 2026-10:8:sample_26, 2026-11:8:sample_26
+
+<!-- TURNOVER_BEGIN -->
+## Turnover controls on the equal-weight book
+
+This section slows down book (a): the equal-weight blend of the AlphaMaster factors selected for that month, ranked cross-sectionally the way SuperTrader ranks.
+Longs share gross +0.5 and shorts share gross −0.5. A leg with no names is left flat. Rank 1 is strongest. Ties break toward the alphabetically earlier symbol.
+The walk-forward rows choose the grid cell on the 180 days before the test month by 5bp Sharpe/|MDD%|, then higher Sharpe, then lower turnover, then the smaller parameter.
+That choice does not see the test month. The position book itself carries from one test month into the next.
+Every other row freezes one cell for the whole sample. Freezing a cell in advance is a real rule. Picking the cell with the best full-sample 5bp ratio after the fact is look-ahead; those rows are marked.
+Buy-and-hold of the 8 coins is equal weight, long only, gross 1, and is not rebalanced. Its turnover is zero, including the open. The same series is the row previously titled equal-weight long-only.
+
+Sharpe/|MDD%| at 5bp does not push the walk-forward toward the slow cells. Once every path is a steady loss, the drawdown scales with the loss and the ratio sits near −0.01 for a fast book and a slow one. The in-sample rule therefore keeps a small band and a short hold. The slowest frozen cells, a score-spread gate of 0.40, cut turnover the most (about 4.5/day at 15m for k=3, about 1/day at 1h) and lose less money, and they are still negative at 5bp. Their zero-fee Sharpe is about zero as well, so the pre-cost rank edge does not survive that slowdown.
+
+### 15m turnover
+
+Minimum hold is measured in bars of this timeframe and lines up with 1h, 2h, 4h and 8h. On 15m those are 4, 8, 16, 32 bars.
+Rank band: enter in the top k or bottom k, and leave only after falling out of the top k+b or bottom k+b. k+b is capped at 8.
+Score threshold: rebuild the plain top-k book only when the gap between the mean score of the desired longs and the mean score of the desired shorts has moved by at least the threshold since the last rebuild.
+
+Walk-forward paths, the plain k=1 book, and buy-and-hold:
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| WF rank band | +135.2% | 1.23 | -35.7% | 0.03 | -2977.5% | -26.78 | -2977.5% | -0.01 | 52.10 | -27.61 | -21.32 | -27.48 | -38.97 |
+| WF minimum hold | +105.4% | 0.99 | -44.6% | 0.02 | -2784.1% | -25.91 | -2784.1% | -0.01 | 48.36 | -26.47 | -20.71 | -26.56 | -37.88 |
+| WF score threshold | +92.1% | 0.78 | -51.7% | 0.02 | -3211.3% | -26.81 | -3211.3% | -0.01 | 55.29 | -30.89 | -20.91 | -27.33 | -37.63 |
+| plain top-1 / bottom-1, no band | +205.0% | 1.68 | -50.4% | 0.03 | -4291.3% | -34.74 | -4291.3% | -0.01 | 75.25 | -36.25 | -27.73 | -34.67 | -52.01 |
+| buy-and-hold of the 8 coins | +106.8% | 0.51 | -98.7% | 0.01 | +106.8% | 0.51 | -98.7% | 0.01 | 0.00 | 1.80 | 1.40 | -0.06 | -0.59 |
+
+In-sample choices: 2023-08:k1b1, 2023-09:k1b1, 2023-10:k1b1, 2023-11:k1b1, 2023-12:k1b1, 2024-01:k1b1, 2024-02:k1b1, 2024-03:k1b1, 2024-04:k1b1, 2024-05:k1b1, 2024-06:k1b1, 2024-07:k1b1, 2024-08:k1b1, 2024-09:k1b1, 2024-10:k1b1, 2024-11:k1b1, 2024-12:k1b1, 2025-01:k1b1, 2025-02:k1b1, 2025-03:k1b1, 2025-04:k1b1, 2025-05:k1b1, 2025-06:k1b1, 2025-07:k1b1, 2025-08:k1b1, 2025-09:k1b1, 2025-10:k1b1, 2025-11:k1b1, 2025-12:k1b1, 2026-01:k1b1, 2026-02:k1b1, 2026-03:k1b1, 2026-04:k1b1, 2026-05:k1b1, 2026-06:k1b1, 2026-07:k1b1, 2026-08:k1b1, 2026-09:k1b1, 2026-10:k1b1, 2026-11:k1b1
+
+In-sample hold choices: 2023-08:k1H4, 2023-09:k1H4, 2023-10:k1H4, 2023-11:k1H4, 2023-12:k1H4, 2024-01:k1H4, 2024-02:k1H4, 2024-03:k1H4, 2024-04:k1H4, 2024-05:k1H4, 2024-06:k1H4, 2024-07:k1H4, 2024-08:k1H4, 2024-09:k1H4, 2024-10:k1H4, 2024-11:k1H4, 2024-12:k1H4, 2025-01:k1H4, 2025-02:k1H4, 2025-03:k1H4, 2025-04:k1H4, 2025-05:k1H4, 2025-06:k1H4, 2025-07:k1H4, 2025-08:k1H4, 2025-09:k1H4, 2025-10:k1H4, 2025-11:k1H4, 2025-12:k1H4, 2026-01:k1H4, 2026-02:k1H4, 2026-03:k1H4, 2026-04:k1H4, 2026-05:k1H4, 2026-06:k1H4, 2026-07:k1H4, 2026-08:k1H4, 2026-09:k1H4, 2026-10:k1H4, 2026-11:k1H4
+
+In-sample threshold choices: 2023-08:k1≥0.05, 2023-09:k1≥0.05, 2023-10:k1≥0.05, 2023-11:k1≥0.05, 2023-12:k1≥0.05, 2024-01:k1≥0.05, 2024-02:k1≥0.05, 2024-03:k1≥0.40, 2024-04:k1≥0.05, 2024-05:k1≥0.05, 2024-06:k1≥0.05, 2024-07:k1≥0.05, 2024-08:k1≥0.05, 2024-09:k1≥0.40, 2024-10:k1≥0.10, 2024-11:k1≥0.10, 2024-12:k1≥0.05, 2025-01:k2≥0.40, 2025-02:k1≥0.05, 2025-03:k1≥0.05, 2025-04:k1≥0.05, 2025-05:k1≥0.10, 2025-06:k1≥0.10, 2025-07:k1≥0.05, 2025-08:k1≥0.05, 2025-09:k1≥0.05, 2025-10:k1≥0.05, 2025-11:k1≥0.40, 2025-12:k1≥0.05, 2026-01:k1≥0.05, 2026-02:k1≥0.20, 2026-03:k1≥0.05, 2026-04:k1≥0.20, 2026-05:k1≥0.05, 2026-06:k1≥0.05, 2026-07:k1≥0.05, 2026-08:k1≥0.10, 2026-09:k1≥0.20, 2026-10:k1≥0.10, 2026-11:k1≥0.05
+
+Frozen rank-band grid. The plain b=0 rows are the unbanded book, not part of the band search.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, b=1 **(look-ahead)** | +135.2% | 1.23 | -35.7% | 0.03 | -2977.5% | -26.78 | -2977.5% | -0.01 | 52.10 | -27.61 | -21.32 | -27.48 | -38.97 |
+| k=1, b=2 | +89.2% | 0.89 | -42.8% | 0.02 | -2192.7% | -21.75 | -2192.7% | -0.01 | 38.19 | -22.65 | -17.59 | -22.58 | -30.62 |
+| k=1, b=3 | +63.0% | 0.69 | -41.4% | 0.02 | -1664.1% | -18.22 | -1664.1% | -0.01 | 28.91 | -18.91 | -14.92 | -19.17 | -24.70 |
+| k=2, b=1 | +95.3% | 1.26 | -21.6% | 0.06 | -2519.4% | -32.95 | -2519.4% | -0.01 | 43.76 | -35.46 | -26.35 | -34.09 | -46.40 |
+| k=2, b=2 | +68.3% | 0.98 | -24.8% | 0.04 | -1868.4% | -26.67 | -1868.4% | -0.01 | 32.41 | -29.54 | -21.67 | -27.50 | -35.98 |
+| k=2, b=3 | +58.2% | 0.93 | -27.2% | 0.03 | -1367.5% | -21.84 | -1367.5% | -0.02 | 23.86 | -24.59 | -17.80 | -22.91 | -28.50 |
+| k=3, b=1 | +59.0% | 0.99 | -25.0% | 0.04 | -2052.8% | -33.93 | -2052.7% | -0.02 | 35.35 | -38.62 | -28.12 | -33.94 | -45.33 |
+| k=3, b=2 | +53.7% | 0.99 | -21.4% | 0.05 | -1482.5% | -26.93 | -1482.4% | -0.02 | 25.71 | -31.03 | -22.09 | -27.68 | -34.92 |
+| k=3, b=3 | +39.6% | 0.72 | -34.1% | 0.02 | -963.8% | -17.29 | -963.8% | -0.02 | 16.79 | -19.49 | -14.39 | -18.23 | -21.73 |
+| k=1, b=0 plain | +205.0% | 1.68 | -50.4% | 0.03 | -4291.3% | -34.74 | -4291.3% | -0.01 | 75.25 | -36.25 | -27.73 | -34.67 | -52.01 |
+| k=2, b=0 plain | +123.8% | 1.50 | -22.0% | 0.07 | -3286.1% | -39.47 | -3286.0% | -0.01 | 57.07 | -42.21 | -31.73 | -39.73 | -57.26 |
+| k=3, b=0 plain | +79.5% | 1.23 | -24.0% | 0.05 | -2606.6% | -39.99 | -2606.5% | -0.02 | 44.96 | -44.80 | -32.75 | -40.19 | -55.02 |
+
+Frozen minimum-hold grid.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, H=4 bars **(look-ahead)** | +105.4% | 0.99 | -44.6% | 0.02 | -2784.1% | -25.91 | -2784.1% | -0.01 | 48.36 | -26.47 | -20.71 | -26.56 | -37.88 |
+| k=1, H=8 bars | +73.7% | 0.80 | -41.6% | 0.02 | -1886.6% | -20.46 | -1886.5% | -0.01 | 32.81 | -21.10 | -16.08 | -21.28 | -30.32 |
+| k=1, H=16 bars | -36.5% | -0.46 | -88.4% | -0.01 | -1202.0% | -15.01 | -1202.2% | -0.01 | 19.51 | -14.50 | -13.17 | -14.80 | -21.31 |
+| k=1, H=32 bars | +20.0% | 0.30 | -37.2% | 0.01 | -616.3% | -9.17 | -616.5% | -0.01 | 10.65 | -9.02 | -7.50 | -9.23 | -13.38 |
+| k=2, H=4 bars | +89.9% | 1.19 | -21.5% | 0.06 | -2441.9% | -32.07 | -2441.8% | -0.01 | 42.37 | -32.51 | -26.13 | -32.52 | -46.76 |
+| k=2, H=8 bars | +43.9% | 0.64 | -28.3% | 0.02 | -1772.4% | -25.73 | -1772.5% | -0.01 | 30.40 | -29.89 | -21.14 | -25.24 | -35.79 |
+| k=2, H=16 bars | -2.1% | -0.03 | -48.8% | -0.00 | -1128.3% | -17.18 | -1128.4% | -0.02 | 18.85 | -19.10 | -14.44 | -16.48 | -24.88 |
+| k=2, H=32 bars | -12.3% | -0.20 | -53.8% | -0.00 | -642.4% | -10.45 | -642.6% | -0.02 | 10.54 | -10.28 | -8.94 | -10.97 | -13.97 |
+| k=3, H=4 bars | +55.4% | 0.92 | -24.7% | 0.04 | -2138.5% | -35.14 | -2138.4% | -0.02 | 36.72 | -39.00 | -28.73 | -35.85 | -47.70 |
+| k=3, H=8 bars | +1.5% | 0.03 | -43.3% | 0.00 | -1632.4% | -27.35 | -1632.5% | -0.02 | 27.35 | -28.90 | -22.24 | -28.57 | -37.49 |
+| k=3, H=16 bars | +7.1% | 0.12 | -32.9% | 0.00 | -1047.3% | -18.13 | -1047.6% | -0.02 | 17.65 | -18.79 | -14.64 | -18.67 | -25.17 |
+| k=3, H=32 bars | +17.6% | 0.31 | -45.1% | 0.01 | -591.4% | -10.30 | -592.3% | -0.02 | 10.19 | -8.94 | -9.41 | -9.90 | -14.76 |
+
+Frozen score-threshold grid. spread≥0 is the plain book, rebuilt every bar.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, spread≥0.05 **(look-ahead)** | +172.2% | 1.43 | -49.8% | 0.03 | -3650.1% | -29.85 | -3650.1% | -0.01 | 63.97 | -30.89 | -23.51 | -30.36 | -44.06 |
+| k=1, spread≥0.10 | +113.7% | 0.95 | -60.1% | 0.02 | -3073.2% | -25.33 | -3073.2% | -0.01 | 53.34 | -26.28 | -20.00 | -26.09 | -36.60 |
+| k=1, spread≥0.20 | +60.3% | 0.51 | -53.2% | 0.01 | -2042.2% | -17.04 | -2042.2% | -0.01 | 35.19 | -17.55 | -13.25 | -17.63 | -25.24 |
+| k=1, spread≥0.40 | -90.5% | -0.79 | -149.6% | -0.01 | -944.8% | -8.16 | -945.3% | -0.01 | 14.30 | -7.91 | -7.67 | -8.17 | -10.13 |
+| k=2, spread≥0.05 | +118.8% | 1.44 | -26.0% | 0.06 | -2686.6% | -32.18 | -2686.6% | -0.01 | 46.95 | -33.93 | -26.05 | -32.77 | -45.56 |
+| k=2, spread≥0.10 | +39.3% | 0.48 | -60.4% | 0.01 | -2191.1% | -26.40 | -2191.1% | -0.01 | 37.33 | -27.36 | -21.79 | -27.56 | -35.51 |
+| k=2, spread≥0.20 | +19.1% | 0.24 | -60.8% | 0.00 | -1341.3% | -16.74 | -1341.3% | -0.01 | 22.77 | -17.89 | -13.64 | -18.07 | -21.57 |
+| k=2, spread≥0.40 | -5.1% | -0.06 | -58.0% | -0.00 | -485.3% | -6.04 | -485.6% | -0.01 | 8.04 | -6.92 | -5.40 | -5.30 | -8.73 |
+| k=3, spread≥0.05 | +48.2% | 0.75 | -21.9% | 0.03 | -2098.4% | -32.21 | -2098.3% | -0.02 | 35.93 | -36.33 | -26.13 | -32.87 | -43.59 |
+| k=3, spread≥0.10 | +43.8% | 0.69 | -22.6% | 0.03 | -1598.1% | -24.73 | -1598.0% | -0.02 | 27.48 | -28.52 | -19.64 | -25.78 | -32.92 |
+| k=3, spread≥0.20 | -13.2% | -0.21 | -40.7% | -0.01 | -939.7% | -14.73 | -939.6% | -0.02 | 15.51 | -17.09 | -11.21 | -16.39 | -19.00 |
+| k=3, spread≥0.40 | -4.4% | -0.07 | -57.9% | -0.00 | -271.5% | -4.34 | -272.0% | -0.02 | 4.47 | -7.15 | -3.98 | -2.70 | -6.53 |
+| k=1, spread≥0 (every bar) | +205.0% | 1.68 | -50.4% | 0.03 | -4291.3% | -34.74 | -4291.3% | -0.01 | 75.25 | -36.25 | -27.73 | -34.67 | -52.01 |
+| k=2, spread≥0 (every bar) | +123.8% | 1.50 | -22.0% | 0.07 | -3286.1% | -39.47 | -3286.0% | -0.01 | 57.07 | -42.21 | -31.73 | -39.73 | -57.26 |
+| k=3, spread≥0 (every bar) | +79.5% | 1.23 | -24.0% | 0.05 | -2606.6% | -39.99 | -2606.5% | -0.02 | 44.96 | -44.80 | -32.75 | -40.19 | -55.02 |
+
+Truncation passed. Cut 2024-06-15T00:00:00Z. Factor max abs gap 0.000e+00. June band selection identical: True. Walk-forward band weights up to the cut, 30623 bars, max abs gap 0.000e+00.
+
+Charts: `charts/equity_turnover_15m.png`, `charts/equity_hysteresis_15m.png`.
+
+### 30m turnover
+
+Minimum hold is measured in bars of this timeframe and lines up with 1h, 2h, 4h and 8h. On 30m those are 2, 4, 8, 16 bars.
+Rank band: enter in the top k or bottom k, and leave only after falling out of the top k+b or bottom k+b. k+b is capped at 8.
+Score threshold: rebuild the plain top-k book only when the gap between the mean score of the desired longs and the mean score of the desired shorts has moved by at least the threshold since the last rebuild.
+
+Walk-forward paths, the plain k=1 book, and buy-and-hold:
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| WF rank band | +32.5% | 0.31 | -61.9% | 0.01 | -1656.0% | -15.70 | -1656.0% | -0.01 | 28.26 | -17.85 | -14.68 | -15.22 | -18.42 |
+| WF minimum hold | +42.5% | 0.40 | -55.7% | 0.01 | -1933.2% | -17.93 | -1933.2% | -0.01 | 33.07 | -19.91 | -15.75 | -18.18 | -21.92 |
+| WF score threshold | -51.2% | -0.49 | -77.1% | -0.01 | -1028.8% | -9.73 | -1029.2% | -0.01 | 16.36 | -10.95 | -8.87 | -7.97 | -13.74 |
+| plain top-1 / bottom-1, no band | +90.1% | 0.80 | -52.7% | 0.02 | -2315.7% | -20.31 | -2315.7% | -0.01 | 40.27 | -21.84 | -18.22 | -20.39 | -25.04 |
+| buy-and-hold of the 8 coins | +105.2% | 0.51 | -97.9% | 0.01 | +105.2% | 0.51 | -97.9% | 0.01 | 0.00 | 1.92 | 1.41 | -0.04 | -0.62 |
+
+In-sample choices: 2023-08:k1b1, 2023-09:k1b1, 2023-10:k1b1, 2023-11:k1b1, 2023-12:k1b1, 2024-01:k1b1, 2024-02:k1b1, 2024-03:k1b1, 2024-04:k1b1, 2024-05:k1b1, 2024-06:k1b1, 2024-07:k1b1, 2024-08:k1b1, 2024-09:k1b1, 2024-10:k1b1, 2024-11:k1b1, 2024-12:k1b1, 2025-01:k1b1, 2025-02:k1b1, 2025-03:k1b1, 2025-04:k1b1, 2025-05:k1b1, 2025-06:k1b1, 2025-07:k1b1, 2025-08:k1b1, 2025-09:k1b1, 2025-10:k1b1, 2025-11:k1b1, 2025-12:k1b1, 2026-01:k1b1, 2026-02:k1b1, 2026-03:k1b1, 2026-04:k1b1, 2026-05:k1b1, 2026-06:k1b1, 2026-07:k1b1, 2026-08:k1b1, 2026-09:k1b1, 2026-10:k1b1, 2026-11:k1b1
+
+In-sample hold choices: 2023-08:k1H2, 2023-09:k1H2, 2023-10:k1H2, 2023-11:k1H2, 2023-12:k1H2, 2024-01:k1H2, 2024-02:k1H2, 2024-03:k1H2, 2024-04:k1H2, 2024-05:k1H2, 2024-06:k1H2, 2024-07:k1H2, 2024-08:k1H2, 2024-09:k1H2, 2024-10:k1H2, 2024-11:k1H2, 2024-12:k1H2, 2025-01:k1H2, 2025-02:k1H2, 2025-03:k1H2, 2025-04:k1H2, 2025-05:k1H2, 2025-06:k1H2, 2025-07:k1H2, 2025-08:k1H2, 2025-09:k1H2, 2025-10:k1H2, 2025-11:k1H2, 2025-12:k1H2, 2026-01:k1H2, 2026-02:k1H2, 2026-03:k1H2, 2026-04:k1H2, 2026-05:k1H2, 2026-06:k1H2, 2026-07:k1H2, 2026-08:k1H2, 2026-09:k1H2, 2026-10:k1H2, 2026-11:k1H2
+
+In-sample threshold choices: 2023-08:k1≥0.40, 2023-09:k1≥0.40, 2023-10:k1≥0.10, 2023-11:k1≥0.05, 2023-12:k1≥0.20, 2024-01:k1≥0.05, 2024-02:k1≥0.40, 2024-03:k2≥0.40, 2024-04:k1≥0.40, 2024-05:k1≥0.40, 2024-06:k1≥0.40, 2024-07:k1≥0.05, 2024-08:k1≥0.20, 2024-09:k2≥0.40, 2024-10:k1≥0.05, 2024-11:k1≥0.05, 2024-12:k1≥0.40, 2025-01:k1≥0.40, 2025-02:k1≥0.40, 2025-03:k1≥0.05, 2025-04:k1≥0.10, 2025-05:k1≥0.40, 2025-06:k1≥0.40, 2025-07:k1≥0.40, 2025-08:k3≥0.40, 2025-09:k2≥0.40, 2025-10:k2≥0.40, 2025-11:k3≥0.40, 2025-12:k2≥0.40, 2026-01:k2≥0.40, 2026-02:k1≥0.40, 2026-03:k1≥0.20, 2026-04:k1≥0.10, 2026-05:k1≥0.05, 2026-06:k1≥0.40, 2026-07:k1≥0.05, 2026-08:k1≥0.20, 2026-09:k1≥0.40, 2026-10:k1≥0.05, 2026-11:k1≥0.20
+
+Frozen rank-band grid. The plain b=0 rows are the unbanded book, not part of the band search.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, b=1 **(look-ahead)** | +32.5% | 0.31 | -61.9% | 0.01 | -1656.0% | -15.70 | -1656.0% | -0.01 | 28.26 | -17.85 | -14.68 | -15.22 | -18.42 |
+| k=1, b=2 | -12.0% | -0.13 | -89.0% | -0.00 | -1260.4% | -13.18 | -1260.3% | -0.01 | 20.89 | -15.06 | -12.32 | -13.06 | -14.83 |
+| k=1, b=3 | -39.9% | -0.46 | -79.4% | -0.01 | -982.2% | -11.39 | -982.1% | -0.01 | 15.77 | -13.74 | -9.93 | -11.91 | -12.84 |
+| k=2, b=1 | +0.2% | 0.00 | -61.0% | 0.00 | -1395.9% | -18.99 | -1395.9% | -0.01 | 23.37 | -21.83 | -16.98 | -19.16 | -22.26 |
+| k=2, b=2 | -15.4% | -0.23 | -61.5% | -0.00 | -1052.2% | -15.69 | -1052.1% | -0.01 | 17.35 | -18.50 | -13.73 | -16.27 | -18.08 |
+| k=2, b=3 | -29.7% | -0.49 | -63.0% | -0.01 | -796.5% | -13.03 | -796.6% | -0.02 | 12.83 | -15.48 | -11.70 | -13.22 | -14.81 |
+| k=3, b=1 | -21.7% | -0.37 | -62.9% | -0.01 | -1141.1% | -19.29 | -1141.2% | -0.02 | 18.74 | -21.69 | -17.62 | -19.54 | -22.36 |
+| k=3, b=2 | -36.4% | -0.67 | -65.3% | -0.01 | -859.5% | -15.72 | -859.6% | -0.02 | 13.78 | -17.73 | -14.76 | -15.44 | -18.22 |
+| k=3, b=3 | -17.1% | -0.32 | -48.5% | -0.01 | -558.4% | -10.32 | -558.6% | -0.02 | 9.06 | -13.04 | -8.70 | -10.86 | -11.67 |
+| k=1, b=0 plain | +90.1% | 0.80 | -52.7% | 0.02 | -2315.7% | -20.31 | -2315.7% | -0.01 | 40.27 | -21.84 | -18.22 | -20.39 | -25.04 |
+| k=2, b=0 plain | +29.3% | 0.36 | -51.2% | 0.01 | -1778.6% | -21.97 | -1778.6% | -0.01 | 30.26 | -25.24 | -19.90 | -21.28 | -27.08 |
+| k=3, b=0 plain | -1.8% | -0.03 | -55.5% | -0.00 | -1425.3% | -22.39 | -1425.3% | -0.02 | 23.83 | -24.90 | -20.45 | -22.37 | -26.57 |
+
+Frozen minimum-hold grid.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, H=2 bars **(look-ahead)** | +42.5% | 0.40 | -55.7% | 0.01 | -1933.2% | -17.93 | -1933.2% | -0.01 | 33.07 | -19.91 | -15.75 | -18.18 | -21.92 |
+| k=1, H=4 bars | -0.2% | -0.00 | -89.8% | -0.00 | -1507.9% | -15.16 | -1507.9% | -0.01 | 25.23 | -16.29 | -13.52 | -15.78 | -18.06 |
+| k=1, H=8 bars | -3.6% | -0.04 | -63.5% | -0.00 | -1007.8% | -11.81 | -1007.7% | -0.01 | 16.81 | -13.64 | -10.11 | -11.73 | -14.91 |
+| k=1, H=16 bars | -20.7% | -0.29 | -64.2% | -0.00 | -609.2% | -8.48 | -609.7% | -0.01 | 9.85 | -9.92 | -7.94 | -7.72 | -10.36 |
+| k=2, H=2 bars | +5.5% | 0.07 | -57.9% | 0.00 | -1619.2% | -20.47 | -1619.2% | -0.01 | 27.19 | -24.01 | -18.28 | -19.51 | -26.10 |
+| k=2, H=4 bars | -22.2% | -0.30 | -80.1% | -0.00 | -1333.1% | -17.93 | -1333.2% | -0.01 | 21.94 | -21.12 | -16.30 | -16.77 | -22.75 |
+| k=2, H=8 bars | +22.7% | 0.35 | -47.3% | 0.01 | -907.9% | -14.00 | -908.3% | -0.02 | 15.58 | -16.96 | -10.77 | -14.94 | -17.62 |
+| k=2, H=16 bars | -41.8% | -0.68 | -60.3% | -0.01 | -610.3% | -9.95 | -611.4% | -0.02 | 9.51 | -12.24 | -8.35 | -9.83 | -12.39 |
+| k=3, H=2 bars | -32.1% | -0.52 | -70.7% | -0.01 | -1384.0% | -22.14 | -1384.0% | -0.02 | 22.63 | -24.76 | -20.20 | -21.76 | -26.83 |
+| k=3, H=4 bars | -26.9% | -0.44 | -64.7% | -0.01 | -1165.5% | -18.90 | -1165.5% | -0.02 | 19.06 | -21.11 | -16.86 | -18.49 | -24.14 |
+| k=3, H=8 bars | -42.5% | -0.72 | -77.6% | -0.01 | -883.0% | -14.85 | -883.2% | -0.02 | 14.07 | -18.26 | -12.61 | -14.76 | -18.67 |
+| k=3, H=16 bars | -13.8% | -0.24 | -39.9% | -0.01 | -552.5% | -9.76 | -553.6% | -0.02 | 9.02 | -12.51 | -8.40 | -8.80 | -13.12 |
+
+Frozen score-threshold grid. spread≥0 is the plain book, rebuilt every bar.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, spread≥0.05 **(look-ahead)** | +70.3% | 0.62 | -54.3% | 0.01 | -1986.1% | -17.39 | -1986.1% | -0.01 | 34.42 | -19.72 | -15.17 | -17.56 | -21.36 |
+| k=1, spread≥0.10 | +7.6% | 0.07 | -67.9% | 0.00 | -1708.1% | -15.09 | -1708.1% | -0.01 | 28.72 | -16.85 | -13.75 | -14.84 | -18.24 |
+| k=1, spread≥0.20 | -12.3% | -0.11 | -53.2% | -0.00 | -1152.5% | -10.58 | -1152.4% | -0.01 | 19.08 | -11.36 | -9.47 | -10.54 | -12.96 |
+| k=1, spread≥0.40 | -86.7% | -0.81 | -118.3% | -0.01 | -561.8% | -5.22 | -562.3% | -0.01 | 7.95 | -8.07 | -4.21 | -4.69 | -6.46 |
+| k=2, spread≥0.05 | +19.6% | 0.24 | -51.9% | 0.00 | -1471.7% | -18.11 | -1471.6% | -0.01 | 24.96 | -21.06 | -16.20 | -17.62 | -22.28 |
+| k=2, spread≥0.10 | -7.1% | -0.09 | -63.3% | -0.00 | -1203.0% | -14.84 | -1203.1% | -0.01 | 20.02 | -17.68 | -13.64 | -14.25 | -17.53 |
+| k=2, spread≥0.20 | -12.5% | -0.16 | -62.4% | -0.00 | -751.0% | -9.53 | -751.6% | -0.01 | 12.36 | -11.72 | -9.22 | -8.79 | -10.79 |
+| k=2, spread≥0.40 | +34.6% | 0.45 | -39.2% | 0.01 | -219.3% | -2.85 | -223.2% | -0.01 | 4.25 | -4.33 | -2.25 | -3.50 | -2.18 |
+| k=3, spread≥0.05 | -19.6% | -0.31 | -63.8% | -0.00 | -1162.9% | -18.28 | -1162.9% | -0.02 | 19.14 | -20.37 | -16.88 | -18.21 | -21.30 |
+| k=3, spread≥0.10 | -25.6% | -0.41 | -64.1% | -0.01 | -909.8% | -14.34 | -909.8% | -0.02 | 14.80 | -16.75 | -13.08 | -14.55 | -16.07 |
+| k=3, spread≥0.20 | -26.1% | -0.41 | -66.5% | -0.01 | -527.8% | -8.20 | -527.8% | -0.02 | 8.40 | -10.82 | -7.84 | -7.58 | -9.07 |
+| k=3, spread≥0.40 | -11.3% | -0.17 | -39.3% | -0.00 | -155.3% | -2.36 | -160.4% | -0.01 | 2.41 | -3.05 | -2.13 | -1.80 | -3.77 |
+| k=1, spread≥0 (every bar) | +90.1% | 0.80 | -52.7% | 0.02 | -2315.7% | -20.31 | -2315.7% | -0.01 | 40.27 | -21.84 | -18.22 | -20.39 | -25.04 |
+| k=2, spread≥0 (every bar) | +29.3% | 0.36 | -51.2% | 0.01 | -1778.6% | -21.97 | -1778.6% | -0.01 | 30.26 | -25.24 | -19.90 | -21.28 | -27.08 |
+| k=3, spread≥0 (every bar) | -1.8% | -0.03 | -55.5% | -0.00 | -1425.3% | -22.39 | -1425.3% | -0.02 | 23.83 | -24.90 | -20.45 | -22.37 | -26.57 |
+
+Truncation passed. Cut 2024-06-15T00:00:00Z. Factor max abs gap 0.000e+00. June band selection identical: True. Walk-forward band weights up to the cut, 15311 bars, max abs gap 0.000e+00.
+
+Charts: `charts/equity_turnover_30m.png`, `charts/equity_hysteresis_30m.png`.
+
+### 1h turnover
+
+Minimum hold is measured in bars of this timeframe and lines up with 1h, 2h, 4h and 8h. On 1h those are 1, 2, 4, 8 bars.
+Rank band: enter in the top k or bottom k, and leave only after falling out of the top k+b or bottom k+b. k+b is capped at 8.
+Score threshold: rebuild the plain top-k book only when the gap between the mean score of the desired longs and the mean score of the desired shorts has moved by at least the threshold since the last rebuild.
+
+Walk-forward paths, the plain k=1 book, and buy-and-hold:
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| WF rank band | -29.0% | -0.29 | -102.7% | -0.00 | -799.2% | -8.03 | -799.4% | -0.01 | 12.89 | -9.33 | -8.05 | -6.10 | -10.71 |
+| WF minimum hold | +13.2% | 0.12 | -77.8% | 0.00 | -1116.4% | -9.95 | -1116.6% | -0.01 | 18.91 | -10.65 | -9.59 | -8.21 | -13.81 |
+| WF score threshold | -53.3% | -0.61 | -106.5% | -0.01 | -246.1% | -2.80 | -251.6% | -0.01 | 3.23 | -2.66 | -4.16 | -1.92 | -1.73 |
+| plain top-1 / bottom-1, no band | +15.8% | 0.14 | -77.8% | 0.00 | -1165.4% | -10.27 | -1165.6% | -0.01 | 19.77 | -10.65 | -9.59 | -9.31 | -13.81 |
+| buy-and-hold of the 8 coins | +100.6% | 0.50 | -102.0% | 0.00 | +100.6% | 0.50 | -102.0% | 0.00 | 0.00 | 1.92 | 1.42 | -0.09 | -0.63 |
+
+In-sample choices: 2023-08:k1b1, 2023-09:k1b1, 2023-10:k1b1, 2023-11:k1b1, 2023-12:k1b1, 2024-01:k1b1, 2024-02:k1b1, 2024-03:k1b1, 2024-04:k1b1, 2024-05:k1b1, 2024-06:k1b1, 2024-07:k1b1, 2024-08:k1b1, 2024-09:k1b1, 2024-10:k1b1, 2024-11:k1b1, 2024-12:k1b1, 2025-01:k1b1, 2025-02:k1b1, 2025-03:k1b1, 2025-04:k1b1, 2025-05:k1b1, 2025-06:k1b3, 2025-07:k1b3, 2025-08:k1b3, 2025-09:k3b3, 2025-10:k3b3, 2025-11:k1b3, 2025-12:k3b3, 2026-01:k1b1, 2026-02:k1b1, 2026-03:k1b1, 2026-04:k1b1, 2026-05:k1b1, 2026-06:k1b1, 2026-07:k1b1, 2026-08:k1b1, 2026-09:k1b1, 2026-10:k1b1, 2026-11:k1b1
+
+In-sample hold choices: 2023-08:k1H1, 2023-09:k1H1, 2023-10:k1H1, 2023-11:k1H1, 2023-12:k1H1, 2024-01:k1H1, 2024-02:k1H1, 2024-03:k1H1, 2024-04:k1H1, 2024-05:k1H1, 2024-06:k1H1, 2024-07:k1H1, 2024-08:k1H1, 2024-09:k1H1, 2024-10:k1H1, 2024-11:k1H1, 2024-12:k1H1, 2025-01:k1H1, 2025-02:k1H1, 2025-03:k1H1, 2025-04:k1H1, 2025-05:k1H1, 2025-06:k1H4, 2025-07:k1H1, 2025-08:k1H2, 2025-09:k1H8, 2025-10:k1H8, 2025-11:k1H8, 2025-12:k1H1, 2026-01:k1H1, 2026-02:k1H1, 2026-03:k1H1, 2026-04:k1H1, 2026-05:k1H1, 2026-06:k1H1, 2026-07:k1H1, 2026-08:k1H1, 2026-09:k1H1, 2026-10:k1H1, 2026-11:k1H1
+
+In-sample threshold choices: 2023-08:k1≥0.40, 2023-09:k1≥0.40, 2023-10:k3≥0.40, 2023-11:k3≥0.40, 2023-12:k3≥0.40, 2024-01:k1≥0.10, 2024-02:k1≥0.40, 2024-03:k1≥0.40, 2024-04:k1≥0.40, 2024-05:k2≥0.40, 2024-06:k2≥0.40, 2024-07:k3≥0.40, 2024-08:k3≥0.40, 2024-09:k1≥0.40, 2024-10:k3≥0.40, 2024-11:k1≥0.05, 2024-12:k2≥0.40, 2025-01:k3≥0.40, 2025-02:k1≥0.10, 2025-03:k2≥0.40, 2025-04:k1≥0.40, 2025-05:k3≥0.40, 2025-06:k3≥0.40, 2025-07:k3≥0.40, 2025-08:k3≥0.40, 2025-09:k1≥0.40, 2025-10:k3≥0.40, 2025-11:k1≥0.40, 2025-12:k3≥0.40, 2026-01:k3≥0.40, 2026-02:k1≥0.40, 2026-03:k3≥0.40, 2026-04:k2≥0.40, 2026-05:k1≥0.40, 2026-06:k1≥0.40, 2026-07:k3≥0.40, 2026-08:k1≥0.40, 2026-09:k1≥0.40, 2026-10:k1≥0.40, 2026-11:k3≥0.40
+
+Frozen rank-band grid. The plain b=0 rows are the unbanded book, not part of the band search.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, b=1 **(look-ahead)** | -21.8% | -0.21 | -102.7% | -0.00 | -854.9% | -8.24 | -855.0% | -0.01 | 13.94 | -9.33 | -8.05 | -7.01 | -10.71 |
+| k=1, b=2 | -80.0% | -0.85 | -129.5% | -0.01 | -687.1% | -7.32 | -687.3% | -0.01 | 10.16 | -7.85 | -7.44 | -6.57 | -8.67 |
+| k=1, b=3 | -85.4% | -0.96 | -144.1% | -0.01 | -549.0% | -6.14 | -549.3% | -0.01 | 7.76 | -7.04 | -6.93 | -5.10 | -6.52 |
+| k=2, b=1 | -52.0% | -0.73 | -108.8% | -0.01 | -737.2% | -10.32 | -737.4% | -0.01 | 11.47 | -13.23 | -9.66 | -9.39 | -12.03 |
+| k=2, b=2 | -46.4% | -0.71 | -103.7% | -0.01 | -558.3% | -8.52 | -558.5% | -0.02 | 8.57 | -11.67 | -8.55 | -7.17 | -9.24 |
+| k=2, b=3 | -51.7% | -0.87 | -101.4% | -0.01 | -427.6% | -7.16 | -428.0% | -0.02 | 6.29 | -10.71 | -7.46 | -5.50 | -7.62 |
+| k=3, b=1 | -33.1% | -0.58 | -85.7% | -0.01 | -589.4% | -10.27 | -589.7% | -0.02 | 9.31 | -14.02 | -9.97 | -8.95 | -11.57 |
+| k=3, b=2 | -48.8% | -0.93 | -89.8% | -0.01 | -453.0% | -8.61 | -453.4% | -0.02 | 6.77 | -12.76 | -8.68 | -6.99 | -9.31 |
+| k=3, b=3 | -40.0% | -0.74 | -80.3% | -0.01 | -305.8% | -5.62 | -306.5% | -0.02 | 4.45 | -8.78 | -5.78 | -4.31 | -6.01 |
+| k=1, b=0 plain | +15.8% | 0.14 | -77.8% | 0.00 | -1165.4% | -10.27 | -1165.6% | -0.01 | 19.77 | -10.65 | -9.59 | -9.31 | -13.81 |
+| k=2, b=0 plain | -19.1% | -0.25 | -94.9% | -0.00 | -915.8% | -11.88 | -916.0% | -0.01 | 15.01 | -15.14 | -10.87 | -10.51 | -14.88 |
+| k=3, b=0 plain | -27.0% | -0.44 | -84.0% | -0.01 | -731.1% | -11.88 | -731.2% | -0.02 | 11.78 | -15.37 | -10.92 | -10.99 | -14.03 |
+
+Frozen minimum-hold grid.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, H=1 bars **(look-ahead)** | +15.8% | 0.14 | -77.8% | 0.00 | -1165.4% | -10.27 | -1165.6% | -0.01 | 19.77 | -10.65 | -9.59 | -9.31 | -13.81 |
+| k=1, H=2 bars | -41.9% | -0.38 | -120.7% | -0.00 | -1018.0% | -9.26 | -1018.2% | -0.01 | 16.34 | -9.77 | -9.19 | -7.97 | -12.04 |
+| k=1, H=4 bars | -43.2% | -0.43 | -99.0% | -0.00 | -782.4% | -7.70 | -782.5% | -0.01 | 12.37 | -8.47 | -7.82 | -5.96 | -10.66 |
+| k=1, H=8 bars | -57.7% | -0.67 | -111.5% | -0.01 | -554.8% | -6.41 | -556.4% | -0.01 | 8.32 | -6.75 | -7.08 | -4.71 | -8.45 |
+| k=2, H=1 bars | -19.1% | -0.25 | -94.9% | -0.00 | -915.8% | -11.88 | -916.0% | -0.01 | 15.01 | -15.14 | -10.87 | -10.51 | -14.88 |
+| k=2, H=2 bars | -36.2% | -0.49 | -106.0% | -0.00 | -840.9% | -11.24 | -841.1% | -0.01 | 13.47 | -14.32 | -10.75 | -9.42 | -14.12 |
+| k=2, H=4 bars | -7.4% | -0.11 | -83.3% | -0.00 | -655.3% | -9.25 | -655.7% | -0.01 | 10.84 | -12.25 | -9.25 | -6.88 | -11.99 |
+| k=2, H=8 bars | -39.1% | -0.61 | -84.1% | -0.01 | -498.6% | -7.71 | -499.0% | -0.02 | 7.69 | -10.82 | -7.54 | -5.79 | -9.74 |
+| k=3, H=1 bars | -27.0% | -0.44 | -84.0% | -0.01 | -731.1% | -11.88 | -731.2% | -0.02 | 11.78 | -15.37 | -10.92 | -10.99 | -14.03 |
+| k=3, H=2 bars | -34.4% | -0.56 | -87.2% | -0.01 | -702.7% | -11.36 | -703.0% | -0.02 | 11.19 | -14.64 | -10.85 | -9.87 | -13.95 |
+| k=3, H=4 bars | -1.3% | -0.02 | -55.3% | -0.00 | -564.6% | -9.28 | -565.2% | -0.02 | 9.43 | -13.16 | -8.83 | -7.27 | -12.09 |
+| k=3, H=8 bars | -14.1% | -0.24 | -56.9% | -0.00 | -429.2% | -7.39 | -430.9% | -0.02 | 6.95 | -10.53 | -6.41 | -7.42 | -7.99 |
+
+Frozen score-threshold grid. spread≥0 is the plain book, rebuilt every bar.
+
+| Variant | Ret 0 | Sh 0 | MDD 0 | Sh/|MDD%| 0 | Ret 5bp | Sh 5bp | MDD 5bp | Sh/|MDD%| 5bp | Turn/day | Sh 5bp 2023 | 2024 | 2025 | 2026 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| k=1, spread≥0.05 | -11.7% | -0.10 | -102.5% | -0.00 | -1011.5% | -8.98 | -1011.8% | -0.01 | 16.74 | -9.44 | -8.97 | -7.55 | -11.76 |
+| k=1, spread≥0.10 **(look-ahead)** | -42.3% | -0.38 | -122.0% | -0.00 | -859.8% | -7.62 | -861.4% | -0.01 | 13.68 | -8.45 | -7.70 | -6.17 | -9.88 |
+| k=1, spread≥0.20 | -120.4% | -1.08 | -160.8% | -0.01 | -657.6% | -5.87 | -659.4% | -0.01 | 8.99 | -7.37 | -5.81 | -4.99 | -6.89 |
+| k=1, spread≥0.40 | -32.1% | -0.30 | -127.1% | -0.00 | -241.4% | -2.22 | -249.7% | -0.01 | 3.50 | -1.91 | -3.99 | -0.15 | -2.53 |
+| k=2, spread≥0.05 | -30.1% | -0.39 | -101.6% | -0.00 | -758.1% | -9.79 | -758.3% | -0.01 | 12.18 | -12.69 | -9.31 | -7.89 | -12.70 |
+| k=2, spread≥0.10 | -71.0% | -0.91 | -121.2% | -0.01 | -641.7% | -8.19 | -642.4% | -0.01 | 9.55 | -10.45 | -8.02 | -6.55 | -10.46 |
+| k=2, spread≥0.20 | -49.3% | -0.64 | -111.4% | -0.01 | -385.4% | -4.95 | -387.6% | -0.01 | 5.63 | -7.57 | -5.16 | -3.13 | -6.32 |
+| k=2, spread≥0.40 | -83.8% | -1.10 | -128.7% | -0.01 | -189.0% | -2.47 | -193.1% | -0.01 | 1.76 | -3.50 | -4.07 | -1.22 | -1.10 |
+| k=3, spread≥0.05 | -53.2% | -0.86 | -95.0% | -0.01 | -603.9% | -9.75 | -604.2% | -0.02 | 9.22 | -13.57 | -9.11 | -8.38 | -11.78 |
+| k=3, spread≥0.10 | -41.3% | -0.67 | -90.2% | -0.01 | -457.2% | -7.36 | -458.0% | -0.02 | 6.96 | -10.74 | -7.43 | -5.52 | -8.78 |
+| k=3, spread≥0.20 | -37.1% | -0.60 | -70.4% | -0.01 | -258.1% | -4.17 | -260.9% | -0.02 | 3.70 | -6.58 | -4.37 | -2.91 | -4.76 |
+| k=3, spread≥0.40 | -65.4% | -1.04 | -87.7% | -0.01 | -122.9% | -1.96 | -135.2% | -0.01 | 0.96 | -1.09 | -2.54 | -1.91 | -1.62 |
+| k=1, spread≥0 (every bar) | +15.8% | 0.14 | -77.8% | 0.00 | -1165.4% | -10.27 | -1165.6% | -0.01 | 19.77 | -10.65 | -9.59 | -9.31 | -13.81 |
+| k=2, spread≥0 (every bar) | -19.1% | -0.25 | -94.9% | -0.00 | -915.8% | -11.88 | -916.0% | -0.01 | 15.01 | -15.14 | -10.87 | -10.51 | -14.88 |
+| k=3, spread≥0 (every bar) | -27.0% | -0.44 | -84.0% | -0.01 | -731.1% | -11.88 | -731.2% | -0.02 | 11.78 | -15.37 | -10.92 | -10.99 | -14.03 |
+
+Truncation passed. Cut 2024-06-15T00:00:00Z. Factor max abs gap 0.000e+00. June band selection identical: True. Walk-forward band weights up to the cut, 7655 bars, max abs gap 0.000e+00.
+
+Charts: `charts/equity_turnover_1h.png`, `charts/equity_hysteresis_1h.png`.
+
+Reading the grids: a frozen cell can be traded if it was chosen before looking at the test. The look-ahead mark is only on the single cell that wins the full sample. It is not a walk-forward result.
+<!-- TURNOVER_END -->
 
 ## What was reimplemented
 
@@ -245,7 +500,7 @@ A non-zero factor gap would mean a feature or operator looked past the cut.
 
 The eight coins are the current Moses list. Coins that died before the sample are absent. That is survivorship in the universe, not in the month-by-month membership (membership is fixed).
 Equity and MDD are cumulative sums of simple returns, matching the Moses walk-forward report, not a compounded net-asset-value path.
-Gross exposure of the long/short books is 1. The long-only reference is also gross 1, but it is not dollar-neutral, so its Sharpe is not a like-for-like residual.
+Gross exposure of the long/short books is 1. Buy-and-hold of the 8 coins is also gross 1, but it is long-only, so its Sharpe is not a dollar-neutral residual. That line was previously titled equal-weight long-only.
 48 formulas is a seeded sample from the published grammar, not an exhaustive search of that grammar.
 MWU state is re-initialized at the start of each 180-day window, which is how the Moses monthly replay treats a new factor set.
 No exchange fee schedule other than the flat 0 and 5bp turnover charges was applied. Funding is included on top.
